@@ -40,8 +40,16 @@ for (var i = 0; i < customers.results.length; i++) {
   li.appendChild(phn)
   li.appendChild(ssn)
 
-  //phone number
-    //customers.phone
+  ssn.addEventListener('mouseover', function(){
+    if (ssn.classList != 'no-blur')
+    ssn.classList = ' no-blur'
+  })
+
+  ssn.addEventListener('mouseout', function(){
+    if (ssn.classList != 'ssn')
+    ssn.classList = 'ssn'
+  })
+
   //ssn (blurred and unblurred on hard mode)
     //ssn is under cutomers.id.value
 
