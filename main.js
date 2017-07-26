@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
   res.render('index', data)
 })
 app.get('/customers/:username', (req, res) => {
-  console.log(req.params.username)
   function findUser(user) {
     return user.login.username === req.params.username
   }
