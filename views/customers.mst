@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer {{name.first}} {{name.last}}</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="custlist" id="custlist">
+      <div class="user">
+        <div class="primary">
+          <figure>
+            <img src={{picture.large}} alt="Oops" height=100 width=100>
+          </figure>
+          <div class="contact">
+            <h1>{{name.first}} {{name.last}}</h1>
+            <p class="addy">{{location.street}}</p>
+            <p class="addy2">{{location.city}}, {{location.state}} {{location.postcode}}</p>
+            <p>{{email}} | {{phone}}</p>
+            <p>{{gender}} | DOB: {{dob}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

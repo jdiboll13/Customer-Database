@@ -1,57 +1,24 @@
-//Use this to create the HTML so that it looks as close to the mock-up as possible.
-//customers is the object that contains all the customer information.
+const data = require('./customers')
+const express = require('express')
+const mustacheExpress = require('mustache-express')
+const app = express()
 
-console.log(customers);
+app.use(express.static('public'))
+app.engine('mst', mustacheExpress())
+app.set('views', './views')
+app.set('view engine', 'mst')
 
-let dirlist = document.getElementById('dirlist')
-
-for (var i = 0; i < customers.results.length; i++) {
-  cust = customers.results[i]
-  let li = document.createElement('li')
-  let img = document.createElement('img')
-  let name = document.createElement('p')
-  let email = document.createElement('p')
-  let addy = document.createElement('p')
-  let addy2 = document.createElement('p')
-  let phn = document.createElement('p')
-  let ssn = document.createElement('p')
-
-  img.src = `${cust.picture.large}`
-  name.textContent = `${cust.name.first} ${cust.name.last}`
-  email.textContent = `${cust.email}`
-  addy.textContent = `${cust.location.street}`
-  addy2.textContent = `${cust.location.city}, ${cust.location.state} ${cust.location.postcode}`
-  phn.textContent = `${cust.phone}`
-  ssn.textContent = `${cust.id.value}`
-
-  name.classList.add('name')
-  email.classList.add('email')
-  addy.classList.add('addy')
-  addy2.classList.add('addy2')
-  phn.classList.add('phn')
-  ssn.classList.add('ssn')
-
-  dirlist.appendChild(li)
-  li.appendChild(img)
-  li.appendChild(name)
-  li.appendChild(email)
-  li.appendChild(addy)
-  li.appendChild(addy2)
-  li.appendChild(phn)
-  li.appendChild(ssn)
-
-  ssn.addEventListener('mouseover', function(){
-    if (ssn.classList != 'no-blur')
-    ssn.classList = ' no-blur'
-  })
-
-  ssn.addEventListener('mouseout', function(){
-    if (ssn.classList != 'ssn')
-    ssn.classList = 'ssn'
-  })
-
-  //ssn (blurred and unblurred on hard mode)
-    //ssn is under cutomers.id.value
-
-
-}
+app.listen(3000, () => {
+  console.log("Let's do this!")
+})
+app.get('/', (req, res) => {
+  res.render('index', data)
+})
+app.get('/customers/:username', (req, res) => {
+  console.log(req.params.username)
+  function findUser(user) {
+    return user.login.username === req.params.username
+  }
+  const oneUser = data.results.find(findUser)
+  res.render('customers', oneUser)
+})

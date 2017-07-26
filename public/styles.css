@@ -13,6 +13,10 @@ h1 {
   text-align: center;
   font-weight: normal;
 }
+h2 a {
+  text-decoration: none;
+  text-transform: capitalize;
+}
 ul {
   padding: 0;
   width: 100%;
@@ -51,7 +55,8 @@ p {
   font-size: .8em;
   padding: 1em;
 }
-.addy, .addy2{
+.addy,
+.addy2 {
   text-transform: capitalize;
   font-size: 1em;
 }
@@ -67,9 +72,54 @@ p {
 .ssn {
   padding-bottom: 1.5em;
   color: transparent;
-  text-shadow: 0 0 5px rgba(63,169,121,0.8);
+  text-shadow: 0 0 5px rgba(63, 169, 121, 0.8);
 }
-.no-blur {
+.ssn:hover {
   color: #3fa979;
   text-shadow: none;
+}
+
+.user {
+  font-size: 1.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user h1 {
+  font-size: 2em;
+  margin: 0.25em 0;
+}
+
+.user .primary {
+  display: flex;
+}
+
+.user .contact p {
+  margin: 0;
+}
+
+.user figure {
+  margin: 1em;
+}
+
+.user figure img {
+  border: thin solid #666;
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 150px;
+}
+
+.user dl dt {
+  float: left;
+  font-weight: bold;
+  text-align: right;
+  display: block;
+  width: calc(150px + 1.5em);
+  margin-bottom: 0.5em;
+}
+
+.user dl dd {
+  margin-left: calc(150px + 3em);
+  margin-bottom: 0.5em;
 }
